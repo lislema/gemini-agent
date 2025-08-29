@@ -20,7 +20,7 @@ uvicorn main:app --host 0.0.0.0 --port 8080 --reload
 
 ## Run with Docker 
 
-Docker is built using multi stage builds 
+Docker is built using multi stage builds using hardened [chainguard image](http://https://images.chainguard.dev/) 
 
 ### Build debug & run 
 
