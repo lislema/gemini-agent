@@ -2,6 +2,8 @@
 
 FastAPI microservice that exposes Gemini 2.5 (via Google GenAI SDK) behind a simple REST API.
 
+The idea is to run the agent in GCP in Kubernetes and to send REST commands to it 
+
 ## Features
 - `/health` – health check
 - `/prompt` – one-shot text generation
