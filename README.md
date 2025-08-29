@@ -20,12 +20,28 @@ uvicorn main:app --host 0.0.0.0 --port 8080 --reload
 
 ## Run with Docker 
 
+Docker is built using multi stage builds 
+
+### Build debug & run 
+
 ```bash
 docker build --target debug -t gemini-agent:debug .
 docker run --rm -p 8080:8080 \
   -e GOOGLE_API_KEY="your-key" \
   -e GEMINI_MODEL="gemini-2.5-flash" \
   gemini-agent:debug
+```
+
+### Build production (without command line) & run 
+
+```bash
+docker build --target prod  -t gemini-agent:prod .
+docker run --rm -p 8080:8080 \
+  -e GOOGLE_API_KEY="your-key" \
+  -e GEMINI_MODEL="gemini-2.5-flash" \
+  --read-only --cap-drop ALL --security-opt no-new-privileges \
+  --name gemini-agent-prod \
+  gemini-agent:prod
 ```
 
 ## Test with Curl
